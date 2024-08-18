@@ -42,7 +42,7 @@ unsigned short int get_bits_right(int x, int p, int n) /* get n bits from positi
 unsigned short int get_bits_left(int x, int p, int n)
 {
     unsigned short int zero_complement = ~0;
-    return ((x << (p+1-n)) & ~(zero_complement >> n));
+    return ((x << (p+1-n)) & ~(0 >> n));
 }
 
 unsigned int word_length_calculator() {
