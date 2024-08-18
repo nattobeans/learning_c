@@ -34,12 +34,12 @@ void print_bits16(unsigned short int num) {
     printf("\n");
 }
 
-unsigned int get_bits_right(int x, int p, int n) /* get n bits from position p */
+unsigned short int get_bits_right(int x, int p, int n) /* get n bits from position p */
 {
     return((x >> (p+1-n)) & ~(~0 << n));
 }
 
-unsigned int get_bits_left(int x, int p, int n)
+unsigned short int get_bits_left(int x, int p, int n)
 {
     unsigned short int zero_complement = ~0;
     return ((x << (p+1-n)) & ~(zero_complement >> n));
@@ -55,19 +55,26 @@ unsigned int word_length_calculator() {
     return cnt;
 }
 
-unsigned int rotate_right(unsigned short int x, int b) {
+
+unsigned short int rotate_right(unsigned short int x, int b) {
     unsigned int y = x << (16 - b);
     return (x >> b) | y;
 }
+
+
+unsigned short int invert(unsigned short int x, int p, int n) {
+    return ~((x >> (p + 1 - n) & ~(~0 << n)) << (p + 1 - n)) & x;
+}
+
 
 int main() {
     printf("----------------------------------------------\n");
 
     printf("Modified get_bits to move from left to right\n");
-    unsigned short int x = ~0; 
+    unsigned short int x = 0b101010011100010; 
     print_bits16(x);
-    int y = get_bits_right(x, 5, 4);
-    int z = get_bits_left(x, 5, 4);
+    unsigned short int y = get_bits_right(x, 5, 4);
+    unsigned short int z = get_bits_left(x, 5, 4);
     print_bits16(y);
     print_bits16(z);
     printf("----------------------------------------------\n");
@@ -88,5 +95,11 @@ int main() {
     print_bits16(right2);
     printf("----------------------------------------------\n");
 
+    printf("Invert bits from position p to n\n");
+    unsigned short int inverted = ~0;
+    print_bits16(inverted);
+    inverted = invert(inverted, 7, 5);
+    print_bits16(inverted);
+    printf("----------------------------------------------\n");
     return 1;
 }
