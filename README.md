@@ -17,9 +17,11 @@ Write htoi function: converts a string of hexadecimal digits into its equivalent
 
 ##### Approach
 loop through each character(c) within the character array. See if the numerical representation lies between the integer values in ascii;
+```
 `'1'-'9' == 48-57`
 `'a'-'f' == 65-70`
 `'A'-'F' == 97-102`
+```
 then minus the equivalent(x) to get the correct integer and multiply by 16 ** of the index and accumulate: `acc + (c - x) * myPow(16, i)`
 
 #### Problem 3 - string_squeeze.c
