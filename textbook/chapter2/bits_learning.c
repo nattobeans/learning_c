@@ -42,7 +42,7 @@ unsigned short int get_bits_right(int x, int p, int n) /* get n bits from positi
 unsigned short int get_bits_left(int x, int p, int n)
 {
     unsigned short int zero_complement = ~0;
-    return ((x << (p+1-n)) & ~(0 >> n));
+    return ((x << (p+1-n)) & ~(zero_complement >> n));
 }
 
 unsigned int word_length_calculator() {
@@ -63,7 +63,7 @@ unsigned short int rotate_right(unsigned short int x, int b) {
 
 
 unsigned short int invert(unsigned short int x, int p, int n) {
-    return ~((x >> (p + 1 - n) & ~(~0 << n)) << (p + 1 - n)) & x;
+    return (~(~0 << n)) << (p + 1 - n) ^ x;
 }
 
 
@@ -100,6 +100,10 @@ int main() {
     print_bits16(inverted);
     inverted = invert(inverted, 7, 5);
     print_bits16(inverted);
+    unsigned short int inverted2 = 0b101010101010101;;
+    print_bits16(inverted2);
+    inverted2 = invert(inverted2, 7, 5);
+    print_bits16(inverted2);
     printf("----------------------------------------------\n");
     return 1;
 }
