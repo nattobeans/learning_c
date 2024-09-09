@@ -27,7 +27,7 @@ void expand(char s[], char t[]) {
     int i=0, j=0;
     int n=string_len(s);
     
-    while (s[i] != '\0') {
+    while (s[i] != '\0' && i < n) {
         for (;i<n && s[i] != '-'; ++i) {
             t[j++] = s[i];
         }
