@@ -93,7 +93,6 @@ Write a function expand(s1 , s2) which expands shorthand notations like a-z in t
 ##### Approach
 use a while loop to span the whole string. utilise an inner for loop to locate the first `-`. check whether the dash is surrounded by a valid span then expand using a for loop starting from the first char of the span and ending with the last.
 
-
 #### Problem 3 - convert_num_to_str.c
 In a 2's complement number representation, our version of itoa does not handle the largest negative number, that is, the value of n equal to -(2wordsize-1). Explain why not. Modify it to print that value correctly, regardless of the machine it runs on.
 ```
@@ -121,8 +120,14 @@ in  two's complement system all bits must be flipped then add one to convert to 
 
 The solution is to move the conversion
 
-#### Problem 3 - integer_to.c
+#### Problem 4 - integer_to.c
 Write the analogous function itob(n, s) which converts the unsigned integer n into a binary character representation in s. Write itoh, which converts an integer to hexadecimal representation.
 
 ##### Approach
 I have alread written a 16 bit printer btu I'll rewrite for 32 as thats the one on my pc. append int as char.
+
+#### Problem 5 - itoa_padding.c
+Write a version of itoa which accepts three arguments instead of two. The third argument is a minimum field width; the converted number must be padded with blanks on the left if necessary to make it wide enough.
+
+##### Approach
+Take the previously made function. decrement padding each iteration of the dowhile loop. if padding is above 0 after the end of the loop iterate till padding is 0 whilst adding '0' to for loop.
