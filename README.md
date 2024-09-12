@@ -85,6 +85,44 @@ Rewrite statement with ternary operator `64 < c && c < 71 ? c + 32: c`
 Write a function expand(s, t) which converts characters like newline and tab into visible escape sequences like \n and \t as it copies the string s to t. Use a switch.
 
 ##### Approach
-Use swtich to catch both `\n` and `\t` charcter and instead of setting position `j` to the special character setting index j to `\\` and j+1 to `t or n`
+Use swtich to catch both `\n` and `\t` charcter and instead of setting position `j` to the special character setting index j to `\\` and j+1 to `t or n`.
+
+#### Problem 2 - expand_dash_notation.c
+Write a function expand(s1 , s2) which expands shorthand notations like a-z in the string s1 into the equivalent complete list abc...xyz in s2. Allow for letters of either case and digits, and be prepared to handle cases like a-b-c and a-z0-9 and -a-z.
+
+##### Approach
+use a while loop to span the whole string. utilise an inner for loop to locate the first `-`. check whether the dash is surrounded by a valid span then expand using a for loop starting from the first char of the span and ending with the last.
 
 
+#### Problem 3 - convert_num_to_str.c
+In a 2's complement number representation, our version of itoa does not handle the largest negative number, that is, the value of n equal to -(2wordsize-1). Explain why not. Modify it to print that value correctly, regardless of the machine it runs on.
+```
+itoa(n, s)    /* convert n to characters in s */
+char s[];
+int n;
+{
+    int i, sign;
+
+    if ((sign = n) < 0)    /* record sign */
+        n = -n;              /* make n positive */
+    i = 0;
+    do {    /* generate digits in reverse order */
+        s[i++] = n % 10 + '0';     /* get next digit */
+    } while ((n /= 10) > 0); /* delete it */
+    if (sign < 0)
+        s[i++] = '-';
+    s[i] = '\0';
+    reverse(s);
+}
+```
+
+##### Approach
+in  two's complement system all bits must be flipped then add one to convert to a positive integer. Which will mean the highest possible negative integer will experience integer overflow error i.e: `1000 0000 XOR = 0111 1111 = + one = 1000 0000` thus it equals itself again.
+
+The solution is to move the conversion
+
+#### Problem 3 - integer_to.c
+Write the analogous function itob(n, s) which converts the unsigned integer n into a binary character representation in s. Write itoh, which converts an integer to hexadecimal representation.
+
+##### Approach
+I have alread written a 16 bit printer btu I'll rewrite for 32 as thats the one on my pc. append int as char.
