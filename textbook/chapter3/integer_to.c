@@ -38,7 +38,11 @@ void itoh(int n, char s[]) {
 
     do {
         int h = num % 16;
-        s[i++] = h + '0';
+        if (h < 10) {
+            s[i++] = h + '0';
+        } else {
+            s[i++] = h - 10 + 'a';
+        }
     } while((num /= 16) > 0);
     if (sign) {
         s[i++] = '-';

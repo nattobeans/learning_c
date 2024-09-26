@@ -48,5 +48,5 @@ int main() {
     char s[100];
     itoa(30, s, 6);
     printf("TO STRING: %s\n", s);
-    return 0;
 }
+    return 0;

@@ -131,3 +131,42 @@ Write a version of itoa which accepts three arguments instead of two. The third 
 
 ##### Approach
 Take the previously made function. decrement padding each iteration of the dowhile loop. if padding is above 0 after the end of the loop iterate till padding is 0 whilst adding '0' to for loop.
+
+
+### Chapter 4
+#### Problem 1 - rindex.c
+Write the function rindex(s, t), which returns the position of the rightmost occurrence of t in s, or -1 if there is none.
+
+##### Approach
+no need to explain simple rindex function
+
+#### Problem 2 - atof.c
+Extend atof so it handles scientific notation of the form 123.45e-6 where a floating point number may be followed by e or E and an optionally signed exponent.
+
+##### Approach
+extend the current function by checking for an e/E character. If present
+
+
+#### Problem 3 - no
+##### Approach
+Skipped as I didn't want to do it.
+
+
+#### Problem 4 - read_buffer.c
+Write a routine ungets(s) which will push back an entire string onto the input. Should ungets know about buf and bufp, or should it just use ungetch?
+
+##### Approach
+Just used bufp and buf as ungetch doesn't return a signal to catch and handle (classic c). loop over string and add to stack. did it in order wasnt sure if it should be reversed and also dont care.
+
+#### Problem 5 - char_read_buffer.c
+Suppose that there will never be more than one character of pushback. Modify getch and ungetch accordingly.
+
+##### Approach
+remove buffer have single char instead. read char in getch and reassign to -1. check if c above -1 anin ungetch. if so donot reassign and print message.
+
+#### Problem 6 - read_buffer.c
+Our getch and ungetch do not handle a pushed-back EOF in a portable way. Decide what their properties ought to be if an EOF is pushed back, then implement your design.
+
+##### Approach
+check for EOF in getch and ungetch. If so clean buffer.
+
