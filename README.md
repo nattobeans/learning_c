@@ -168,5 +168,5 @@ remove buffer have single char instead. read char in getch and reassign to -1. c
 Our getch and ungetch do not handle a pushed-back EOF in a portable way. Decide what their properties ought to be if an EOF is pushed back, then implement your design.
 
 ##### Approach
-check for EOF in getch and ungetch. If so clean buffer.
+check for EOF in getch and ungetch. If so clean buffer.`
 
