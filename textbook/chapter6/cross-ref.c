@@ -26,10 +26,8 @@ char char_types[256] = {
 int get_word(FILE *fp, char *word, int *lineNumber) {
     char c;
     while((c = fgetc(fp)) != EOF) {
-        // printf("%c", c);
         if (c == '\n') {
             (*lineNumber)++;
-            printf("line NUMMMMM = %d\n", *lineNumber);
         }
         if (char_types[c] != LETTER) {
             *word = '\0';
@@ -55,18 +53,8 @@ struct tnode {
 struct tnode *tree(struct tnode *tp, char *word, int lidx) {
     struct tnode *talloc();
     int cmp, *lo;
-    
-    // if (tp != NULL) {
-    //     cmp = strcmp(tp->word, word);
-    //     printf("word = %s, node = %s, cmp = %d\n", word, tp->word, cmp);
-    // }
 
     if (tp == NULL) {
-        printf("HELLO %s\n", word);
-    }
-
-    if (tp == NULL) {
-        printf("allocatiing %s\n", word);
         tp = talloc();
         tp->word = strsave(word);
         tp->count = 1; 
@@ -88,10 +76,8 @@ struct tnode *tree(struct tnode *tp, char *word, int lidx) {
             tp->lineOccurance[i] = -1;
         }
     } else if(cmp < 0) {
-        printf("left\n");
         tp->left = tree(tp->left, word, lidx);
     } else {
-        printf("right\n");
         tp->right = tree(tp->right, word, lidx);
     }
     return (tp);
