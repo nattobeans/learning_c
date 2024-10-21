@@ -109,7 +109,7 @@ void printArray(int arr[], int size) {
     for (int i = 0; i < size && arr[i] != -1; i++) {
         printf("%d", arr[i]);
         if (i < size - 1 && arr[i+1] != -1) {
-            printf(", ");  // Add comma and space between elements, but not after the last one
+            printf(", "); 
         }
     }
     printf("]\n");
