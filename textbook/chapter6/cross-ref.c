@@ -52,86 +52,49 @@ struct tnode {
 };
 
 
-// struct tnode *tree(struct tnode *tp, char *word, int lidx) {
-//     struct tnode *talloc();
-//     int cmp, *lo;
+struct tnode *tree(struct tnode *tp, char *word, int lidx) {
+    struct tnode *talloc();
+    int cmp, *lo;
     
-//     if (tp != NULL) {
-//         cmp = strcmp(tp->word, word);
-//         printf("word = %s, node = %s, cmp = %d\n", word, tp->word, cmp);
-//     }
+    // if (tp != NULL) {
+    //     cmp = strcmp(tp->word, word);
+    //     printf("word = %s, node = %s, cmp = %d\n", word, tp->word, cmp);
+    // }
 
-//     if (tp == NULL) {
-//         printf("HELLO %s\n", word);
-//     }
+    if (tp == NULL) {
+        printf("HELLO %s\n", word);
+    }
 
-//     if (tp == NULL) {
-//         printf("allocatiing %s\n", word);
-//         tp = talloc();
-//         tp->word = strsave(word);
-//         tp->lineOccurance[0] = lidx;
-//         tp->lineOccurance[1] = -1;
-//         tp->left = tp->right = NULL;
+    if (tp == NULL) {
+        printf("allocatiing %s\n", word);
+        tp = talloc();
+        tp->word = strsave(word);
+        tp->count = 1; 
+        tp->lineOccurance[0] = lidx;
+        tp->lineOccurance[1] = -1;
+        tp->left = tp->right = NULL;
 
-//     } else if (cmp == 0) {
-//         lo = tp->lineOccurance;
-//         while (*lo != -1) {
-//             if (*lo == lidx) {
-//                 break;
-//             }
-//             lo++;
-//         }
-//         if (*lo != lidx) {
-//             *lo++ = lidx;
-//             *lo = -1;
-//         }
-//     } else if(cmp < 0) {
-//         printf("left\n");
-//         tree(tp->left, word, lidx);
-//     } else {
-//         printf("right\n");
-//         tree(tp->right, word, lidx);
-//     }
-//     return (tp);
-// }
-
-struct tnode *tree(struct tnode *p, char *w, int lidx) 
-{
-  struct tnode *talloc();
-  char *strsave(char *w);
-  int cond;
-
-//   if (p != NULL) {
-//     cond = strcmp(p->word, w);
-//     printf("word = %s, node = %s, cmp = %d\n", w, p->word, cond);
-//   }
-
-  if (p == NULL) {    /* a new word has arrived */
-    p = talloc();     /* make a new node */
-    p->word = strsave(w);
-    p->count = 1;
-    p->lineOccurance[0] = lidx;
-    p->lineOccurance[1] = -1;
-    p->left = p->right = NULL;
-  } else if ((cond = strcmp(w, p->word)) == 0) {
-    p->count++;   
-    int i = 0;
-    while (p->lineOccurance[i] != -1) {
-        if (p->lineOccurance[0] == lidx) {
-            break;
+    } else if ((cmp = strcmp(tp->word, word)) == 0) {
+        tp->count++;   
+        int i = 0;
+        while (tp->lineOccurance[i] != -1) {
+            if (tp->lineOccurance[0] == lidx) {
+                break;
+            }
+            i++;
         }
-        i++;
+        if (tp->lineOccurance[i] == -1) {
+            tp->lineOccurance[i++] = lidx;
+            tp->lineOccurance[i] = -1;
+        }
+    } else if(cmp < 0) {
+        printf("left\n");
+        tp->left = tree(tp->left, word, lidx);
+    } else {
+        printf("right\n");
+        tp->right = tree(tp->right, word, lidx);
     }
-    if (p->lineOccurance[i] == -1) {
-        p->lineOccurance[i++] = lidx;
-        p->lineOccurance[i] = -1;
-    }
-  } 
-  else if (cond < 0)  /* lower goes into left subtree */
-    p->left = tree(p->left, w, lidx);
-  else        /* greater into right subtree */
-    p->right = tree(p->right, w, lidx);
-  return (p);
+    return (tp);
 }
 
 
