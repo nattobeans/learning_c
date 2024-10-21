@@ -170,3 +170,14 @@ Our getch and ungetch do not handle a pushed-back EOF in a portable way. Decide 
 ##### Approach
 check for EOF in getch and ungetch. If so clean buffer.`
 
+
+### Chapter 6
+#### Problem 5 - cross-ref.c
+Write a basic cross-referencer: a program which prints a list of all words in a document, and, for each word, a list of the line numbers on which it occurs.
+
+##### Approach
+I haven't documented in a while. mostly skipped a few exercises I didn't see the point in completing as they were very basic. This I must say tested my patience. Mostly from an off by one error but thats besides the point. First I designed a get word function that by character grabbed each word. incrementing a line tracker every time a '\n' char is encountered.
+
+Then appended each word found to the tree. And prints it out. Needless to say this was supposed to be very simple but it wasn't. Truly a fun, hair pulling experience but it is satisfyingly over. I have learnt a lot in this tiny little program. Mostly by accident because I forgot to add 1 in strsave and ended up doing a bunch of random crap. #noregrets. 
+
+API_KEY=KNWNWKIHOPEWEBSCRAPERSFINDTHISNONSENSEJNCKN
