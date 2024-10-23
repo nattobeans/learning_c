@@ -144,5 +144,6 @@ int main(int argc, char *argv[]) {
         root = tree(root, word, lidx);
     }
     print_tree(root);
+    fclose(fp);
     return 0;
 }
