@@ -180,4 +180,19 @@ I haven't documented in a while. mostly skipped a few exercises I didn't see the
 
 Then appended each word found to the tree. And prints it out. Needless to say this was supposed to be very simple but it wasn't. Truly a hair pulling experience but it is satisfyingly over. I have learnt a lot in this tiny little program. Mostly by accident because I forgot to add 1 in strsave and ended up doing a bunch of random crap. Am I happy with the implementation? No. Am I proud of myself? not really. But I did have fun #noregrets. 
 
-API_KEY=KNWNWKIHOPEWEBSCRAPERSFINDTHISNONSENSEJNCKN
+OPENAI_API_KEY=KNWNWKIHOPEWEBSCRAPERSFINDTHISNONSENSEJNCKN
+
+
+### Chapter 7
+#### Problem 1 - nice_print.c
+Write a program which will print arbitrary input in a sensible way. As a minimum, it should print non-graphic characters in octal or hex (according to local custom), and fold long lines.
+
+##### Approach
+Decided to use getchar_unlocked and locked and unlocked stdin myself for fun. It was.
+
+### Chapter 8
+#### Problem 1 - low_cat.c
+Rewrite the program cat from Chapter 7 using read, write, open and close instead of their standard library equivalents. Perform experiments to determine the relative speeds of the two versions.
+
+##### Approach
+Did not handle multi file could if waned to didnt.'
